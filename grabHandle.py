@@ -35,7 +35,6 @@ def crawlWeb(url_list):
     
 if __name__ == "__main__":
     #Get URLs and correspnding handles.
-
     url_handle_dict = crawlWeb(sample_list)
     #Save result in txt file for later use.
     json.dump(url_handle_dict, open("url_handle.txt",'w'))
