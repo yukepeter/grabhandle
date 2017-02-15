@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html lang="en">
+<head>
+   <title>GrabHandles</title>
+   <link rel="stylesheet" href="/static/css/style.css" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<!-- Import utility functions from log.js -->
+  <script type="text/javascript" src="{{url_for('static', filename = 'js/geturl.js') }}"></script>
+  
+  <div class="center">
+    {% block content %}
+
+    {% endblock %}
+  </div>
+ 
+  <!-- +++++ Footer Section +++++ -->
+  <div id="footer">
+    <div class="container">
+      <div class="row">
+      <!-- /col-lg-4 left-->
+        <div class="col-lg-4">
+          <h4>Developer:</h4>
+          <p>
+            Ke Yu
+          </p>
+        </div><!-- /col-lg-4 left -->
+        <!-- /col-lg-4 middle -->
+        <div class="col-lg-4">
+          <h4>Find this project online</h4>
+          <p>
+            <a href="https://github.com/yukepeter/grabhandle">Github Repository</a><br/>
+          </p>
+        </div><!-- /col-lg-4 middle-->
+        <!-- /col-lg-4 rigtht-->
+        <div class="col-lg-4">
+          <h4>Grab Handles</h4>
+          <p>This website is created for DIG interview</p>
+        </div><!-- /col-lg-4 -->
+
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>

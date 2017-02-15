@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+    <h2>Grab Handles Given URLs</h2>
+    <p class="center">
+      This is an application capable of collecting all the Twitter handles listed on a set of web pages. Given a list of URLs, output a list of twitter handles for each URL.
+    </p>
+    <br>
+    <p>Input: A list of URLs</p>
+    <p>Output: A list of handles for each URL</p>
+
+	 <form action="{{url_for('main.main_route')}}" method="POST">
+  		<div class="form-group">
+      		<label for="Input">Please enter a list of URLs in following text area:</label>
+      		<br>
+      		<textarea name = "url_list" rows="10" cols="50" id="input" placeholder="For Example:&#10;www.google.com&#10;www.twitter.com"></textarea>
+    	</div>
+  		<button id = 'submit' type="submit" class="btn btn-default">Submit</button>
+	</form>
+
+	<div>
+	{%if params%}
+	{%for url,handle_list in params.items()%}
+		<li>
+			<a href="{{url}}">{{url}}</a>
+		</li>>
+		<p>{{handle_list}}</p>
+	{%endfor%}
+	{%endif%}
+
+	</div>
+
+{% endblock %}
