@@ -22,7 +22,6 @@ main = Blueprint('main', __name__, template_folder='templates')
 #Input: String
 #Output: URL if it is vaild
 def is_valid_url(url):
-    import re
     regex = re.compile(
         r'^https?://'  # http:// or https://
         r'(?:(?:[A-Z0-9](?:[A-Z0-9-]{0,61}[A-Z0-9])?\.)+[A-Z]{2,6}\.?|'  # domain...
@@ -30,6 +29,10 @@ def is_valid_url(url):
         r'\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})' # ...or ip
         r'(?::\d+)?'  # optional port
         r'(?:/?|[/?]\S+)$', re.IGNORECASE)
+    # if url is not None and regex.search(url):
+    #     return regex.search(url).group(0)
+    # else:
+    #     return None
     return url is not None and regex.search(url)
 
 @main.route('/',methods =['GET','POST'])
@@ -43,10 +46,13 @@ def main_route():
 		reg1 = r'(?:@[\w_]+)' 
 		for i in url_list:
 			if is_valid_url(i):
-				response = urllib2.urlopen(i)
-				html_doc = response.read()
-				handle_list = re.findall(reg1, html_doc)
-				url_handle_dict[i] = handle_list
+				try:
+					response = urllib2.urlopen(i)
+					html_doc = response.read()
+					handle_list = re.findall(reg1, html_doc)
+					url_handle_dict[i] = handle_list
+				except:
+					url_handle_dict[i] = "Invalid URL"
 			else:
 				url_handle_dict[i] = 'This is not a valid URL'
 		return url_handle_dict
